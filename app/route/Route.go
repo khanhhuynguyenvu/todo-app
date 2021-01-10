@@ -9,25 +9,25 @@ import (
 func Route(r *gin.Engine) *gin.Engine {
 	version := r.Group("/v1")
 	{
-		task := version.Group("/task")
+		task := version.Group("/tasks")
 		{
 			hTask := handlers.TaskHandler{
-				TaskRepo: &repo.TaskRepo{},
+				TaskRepo: &repo.TaskRepoBoiler{},
 			}
 
 			task.POST("", hTask.Create)
 			task.GET("", hTask.All)
 			task.PATCH("")
-			task.DELETE("")
+			task.DELETE("", hTask.Delete)
 
 			specific := task.Group("/:id")
 			{
 				specific.POST("")
 				specific.GET("", hTask.Select)
-				specific.PATCH("")
-				specific.DELETE("", hTask.Delete)
+				specific.PATCH("", hTask.UpdateById)
+				specific.DELETE("", hTask.DeleteById)
 
-				subtask := specific.Group("/subtask")
+				subtask := specific.Group("/subtasks")
 				{
 					subtask.POST("")
 					subtask.GET("")

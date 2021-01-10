@@ -9,7 +9,7 @@ import (
 var DbConn *sql.DB
 
 func init() {
-	db, err := sql.Open("mysql", "root2:root2@tcp(127.0.0.1:3306)/tododb")
+	db, err := sql.Open("mysql", "root2:root2@tcp(127.0.0.1:3306)/tododb?parseTime=true")
 	util.PanicError(err)
 	DbConn = db
 }

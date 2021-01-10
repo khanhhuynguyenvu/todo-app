@@ -1,0 +1,14 @@
+no-auto-timestamps=false
+no-hooks=true
+no-tests=true
+add-global-variants=true
+add-panic-variants=true
+no-context=true
+no-rows-affected=true
+[mysql]
+dbname="tododb"
+user="root2"
+pass="root2"
+host="127.0.0.1"
+port="3306"
+sslmode="false"
